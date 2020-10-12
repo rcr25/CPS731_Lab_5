@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lab5.dummy.DummyContent;
@@ -52,7 +53,7 @@ public class ItemDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.content);
+                appBarLayout.setTitle(mItem.reciName);
             }
         }
     }
@@ -64,7 +65,9 @@ public class ItemDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.details);
+            ((TextView) rootView.findViewById(R.id.fullReci)).setText(mItem.reciDesc);
+            ((ImageView) rootView.findViewById(R.id.reciImage)).setScaleType(ImageView.ScaleType.FIT_XY);
+            ((ImageView) rootView.findViewById(R.id.reciImage)).setImageResource(mItem.reciPic);
         }
 
         return rootView;
