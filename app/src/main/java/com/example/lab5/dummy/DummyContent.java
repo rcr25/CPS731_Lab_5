@@ -1,5 +1,7 @@
 package com.example.lab5.dummy;
 
+import com.example.lab5.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,49 +26,41 @@ public class DummyContent {
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
     private static final int COUNT = 25;
-
-    static {
-        // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
-        }
-    }
-
     private static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
+    private static final String desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin porttitor fermentum. Suspendisse id magna finibus, molestie felis aliquet, pellentesque diam. Nullam elit justo, lobortis id lectus nec, dictum iaculis felis.";
 
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
+    static {
+       addItem(new DummyItem("1","Kale/Lemon Sandwiches", R.drawable.klsand, desc));
+       addItem(new DummyItem("2","Mango-Lime Bean Salad", R.drawable.mbsalad, desc));
+       addItem(new DummyItem("3","Sweet Potato and Lentil Soup with Shiitake Mushrooms", R.drawable.spsoup, desc));
+       addItem(new DummyItem("4","Lime Mousse", R.drawable.lmousse, desc));
+       addItem(new DummyItem("5","Broiled Tilapia Parmesan", R.drawable.btparm, desc));
+   }
 
     /**
      * A dummy item representing a piece of content.
      */
     public static class DummyItem {
         public final String id;
-        public final String content;
-        public final String details;
+        public final String reciName;
+        public final Integer reciPic;
+        public final String reciDesc;
 
-        public DummyItem(String id, String content, String details) {
+
+        public DummyItem(String id, String reciName, Integer reciPic, String reciDesc) {
             this.id = id;
-            this.content = content;
-            this.details = details;
+            this.reciName = reciName;
+            this.reciPic = reciPic;
+            this.reciDesc = reciDesc;
         }
 
         @Override
         public String toString() {
-            return content;
+            return reciName;
         }
     }
 }
